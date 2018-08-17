@@ -10,6 +10,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,8 @@ import com.loopj.android.http.*;
 import android.os.Handler;
 
 import cz.msebera.android.httpclient.Header;
+import android.text.method.ScrollingMovementMethod;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
@@ -298,13 +301,15 @@ public class MainActivity extends Activity {
         // Start the initial runnable task by posting through the handler
         handler.post(runnableCode);
 
+        textView.setMovementMethod(new ScrollingMovementMethod());
+
     }
 
     public void setUiEnabled(boolean bool) {
         startButton.setEnabled(!bool);
         sendButton.setEnabled(true);
         stopButton.setEnabled(bool);
-        textView.setEnabled(bool);
+        textView.setEnabled(true);
         arduino_alive.setEnabled(bool);
         rally_id.setEnabled(bool);
         rally_name.setEnabled(bool);
